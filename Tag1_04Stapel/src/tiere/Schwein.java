@@ -1,4 +1,4 @@
-package de.basf.tiere;
+package tiere;
 
 public class Schwein {
     private String name;

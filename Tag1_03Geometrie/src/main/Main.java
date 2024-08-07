@@ -1,17 +1,12 @@
 package main;
 
+import de.basf.geometrie.Kreis;
 import de.basf.geometrie.Punkt;
 
 public class Main {
     public static void main(String[] args) {
-        Punkt p = new Punkt();
+       Punkt p = new Kreis();
+        System.out.println(p);
 
-
-        System.out.println(p.toString());
-
-        for (int i = 0; i < 11; i++) {
-            p.rechts();
-            System.out.println(p.toString());
-        }
     }
 }

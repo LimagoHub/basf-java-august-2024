@@ -1,4 +1,4 @@
-package de.basf.geometrie;
+package geometrie;
 
 public class Punkt {
     private static final double MAX = 10.0;
