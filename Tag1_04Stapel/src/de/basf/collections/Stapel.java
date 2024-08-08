@@ -1,26 +1,34 @@
 package de.basf.collections;
 
-public class Stapel {
+public class Stapel<T> {
 
     private static final int DEFAULT_SIZE = 10;
-    private int []data;
+    private T []data;
     private int index;
-    public Stapel() {
+    public Stapel() throws StapelException {
         this(DEFAULT_SIZE);
     }
-    public Stapel(int size) {
-        data = new int[size<1?DEFAULT_SIZE:size];
-        index  =0;
+    public Stapel(int size) throws StapelException {
+        try {
+            data = (T[]) new Object[size];
+            index  = 0;
+        } catch (Exception e) {
+            throw new StapelException("Falsche Groesse", e);
+        }
     }
 
-    public void push(int value) {
-        if(isFull()) return;
-        data[index++] = value;
+    public void push(T value) throws StapelException {
+
+        try {
+            data[index++] = value;
+        } catch (Exception e) {
+            throw new StapelException("Overflow",e);
+        }
     }
 
-    public int pop() {
+    public T pop() throws StapelException {
 
-        if(isEmpty()) return 0;
+        if(isEmpty()) throw new StapelException("Underflow");
         return data[--index];
     }
 
