@@ -3,6 +3,7 @@ package de.basf.client;
 import java.util.Scanner;
 
 import de.basf.collections.Liste;
+import de.basf.collections.ListeImpl;
 import de.tiere.Schwein;
 
 public class ListenTest {
@@ -12,20 +13,20 @@ public class ListenTest {
 
     public void run() {
 
-        Liste liste = new Liste();
+        Liste<Schwein> listeImpl = new ListeImpl<>();
 
         while(true) {
             switch (showMenu()) {
                 case 0: System.exit(0);	break;
-                case 1: liste.append(createSchwein());;	break;
-                case 2: System.out.println(liste.get()==null?"Kein Schwein vorhanden":liste.get());;	break;
-                case 3: liste.update(createSchwein());	break;
-                case 4: liste.remove();	break;
-                case 5: liste.moveFirst();	break;
-                case 6: liste.moveLast();	break;
-                case 7: liste.movePrev();	break;
-                case 8: liste.moveNext();	break;
-                case 9: System.out.printf("empty = %s, bol = %s, eol = %s\n", liste.isEmpty(),liste.isBOL(),liste.isEOL());	break;
+                case 1: listeImpl.append(createSchwein());;	break;
+                case 2: System.out.println(listeImpl.get()==null?"Kein Schwein vorhanden": listeImpl.get());;	break;
+                case 3: listeImpl.update(createSchwein());	break;
+                case 4: listeImpl.remove();	break;
+                case 5: listeImpl.moveFirst();	break;
+                case 6: listeImpl.moveLast();	break;
+                case 7: listeImpl.movePrev();	break;
+                case 8: listeImpl.moveNext();	break;
+                case 9: System.out.printf("empty = %s, bol = %s, eol = %s\n", listeImpl.isEmpty(), listeImpl.isBOL(), listeImpl.isEOL());	break;
 
 
             }

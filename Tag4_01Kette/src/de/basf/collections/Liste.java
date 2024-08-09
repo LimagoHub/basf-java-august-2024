@@ -1,86 +1,29 @@
 package de.basf.collections;
 
-/**
- * Eine tolle Klasse
- */
-public class Liste {
+public interface Liste<T> {
+    void append(T value);
 
-    private Knoten start;
-    private Knoten akt;
-    public Liste() {
-        start = akt = null;
+    boolean remove();
+
+    boolean update(T newValue);
+
+    T get();
+
+    boolean moveFirst();
+
+    default   boolean moveLast() {
+        if(isEmpty()) return false;
+        while(moveNext()){}
+        return true;
     }
 
-    public void append(Object value) {
-        Knoten node = new Knoten(value);
-        if(isEmpty()) {
-            start = node;
-        } else {
-            moveLast();
-            akt.nach = node;
-            node.vor = akt;
+    boolean movePrev();
 
-        }
-        akt = node;
-    }
+    boolean moveNext();
 
-    public boolean remove() {
-        return false;
-    }
+    boolean isEmpty();
 
-    public boolean update(Object newValue) {
-        return false;
-    }
+    boolean isBOL();
 
-    public Object get() {
-        return null;
-    }
-
-    public boolean moveFirst() {
-        return false;
-    }
-
-    public boolean moveLast() {
-        return false;
-    }
-
-    public boolean movePrev() {
-        return false;
-    }
-
-    public boolean moveNext() {
-        return false;
-    }
-
-    public boolean isEmpty() {
-        return start == null;
-    }
-
-    /**
-     * liefert true wenn wir entweder AUF dem ersten Satz stehen
-     * oder die Liste leer ist
-     */
-    public boolean isBOL() {
-        return start == akt ;
-    }
-
-    /**
-     * liefert true wenn wir entweder AUF dem letzten Satz stehen
-     * oder die Liste leer ist
-     */
-    public boolean isEOL() {
-        return isEmpty() || akt.nach == null;
-    }
-
-
-
-    private class Knoten {
-        Object payload;
-        Knoten vor, nach;
-
-        public Knoten(Object payload) {
-            this.payload = payload;
-            vor = nach = null;
-        }
-    }
+    boolean isEOL();
 }
