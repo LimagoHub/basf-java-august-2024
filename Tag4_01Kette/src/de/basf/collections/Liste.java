@@ -32,6 +32,10 @@ public class Liste {
         return false;
     }
 
+    public Object get() {
+        return null;
+    }
+
     public boolean moveFirst() {
         return false;
     }
